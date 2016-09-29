@@ -21,9 +21,7 @@ defmodule Concerto.Plug.Mixfile do
      {:plug, ">= 0.0.0"},
      {:mazurka, ">= 1.0.0", only: [:dev, :test]},
      {:mazurka_plug, ">= 0.0.0", only: [:dev, :test]},
-     {:ex_doc, ">= 0.0.0", only: :dev},
-     {:mr_t, "~> 0.6.0", only: [:test, :dev]},
-     {:exsync, "~> 0.1", only: :dev}]
+     {:ex_doc, ">= 0.0.0", only: :dev}]
   end
 
   defp package do
