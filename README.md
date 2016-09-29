@@ -16,7 +16,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 ## Usage
 
-```
+```elixir
 defmodule MyRouter do
   use Concerto, [root: "#{System.cwd!}/fixtures",
                  ext: ".ex",
