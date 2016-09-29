@@ -14,11 +14,14 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
-  2. Ensure `concerto_plug` is started before your application:
+## Usage
 
-    ```elixir
-    def application do
-      [applications: [:concerto_plug]]
-    end
-    ```
+```
+defmodule MyRouter do
+  use Concerto, [root: "#{System.cwd!}/fixtures",
+                 ext: ".ex",
+                 module_prefix: MyApp.Resource]
 
+  use Concerto.Plug.Mazurka
+end
+```
