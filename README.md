@@ -1,6 +1,6 @@
-# ConcertoPlug
+# concerto_plug
 
-**TODO: Add description**
+Plug integration for Concerto
 
 ## Installation
 
