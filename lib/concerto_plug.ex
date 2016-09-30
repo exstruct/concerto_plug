@@ -3,7 +3,7 @@ defmodule Concerto.Plug do
     defexception [:method, :path_info]
 
     def message(%{method: method, path_info: path_info}) do
-      "#{method} #{Concerto.Plug.Mazurka.__format_path__(path_info)} not found"
+      "#{method} /#{Enum.join(path_info, "/")} not found"
     end
 
     defimpl Plug.Exception do
