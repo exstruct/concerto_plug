@@ -28,9 +28,15 @@ defmodule Concerto.Plug.Mazurka do
                        other -> other
                      end}
             |> Mazurka.Plug.update_affordance(conn)
+          nil ->
+            %Mazurka.Affordance.Undefined{resource: resource,
+                                          params: params,
+                                          input: input,
+                                          opts: opts,
+                                          mediatype: affordance.mediatype}
           :error ->
             exception = Concerto.Plug.Mazurka.UnresolvableResourceError.exception(resource: resource, params: params)
-            raise Plug.Conn.WrapperError, conn: conn, type: :error, reason: exception
+            raise Plug.Conn.WrapperError, conn: conn, type: :error, reason: exception, stack: []
         end
       end
 

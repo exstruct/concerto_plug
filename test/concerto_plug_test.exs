@@ -58,4 +58,9 @@ defmodule ConcertoPlugTest do
       |> Router.call(@opts)
     end
   end
+
+  test "resolve no exist" do
+    %Mazurka.Affordance.Undefined{} =
+      Router.resolve(%Mazurka.Affordance{}, nil, nil)
+  end
 end

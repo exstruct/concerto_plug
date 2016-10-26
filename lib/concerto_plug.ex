@@ -44,7 +44,7 @@ defmodule Concerto.Plug do
             })
           nil ->
             exception = Concerto.Plug.NotFoundError.exception(method: method, path_info: path)
-            raise Plug.Conn.WrapperError.exception(conn: conn, kind: :error, reason: exception)
+            raise Plug.Conn.WrapperError, conn: conn, kind: :error, reason: exception, stack: []
         end
       end
 
