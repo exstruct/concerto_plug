@@ -18,7 +18,7 @@ defmodule ConcertoPlugTest do
       action do
         %{
           "Hello" => "Concerto",
-          "bar" => link_to("POST /foo/@bar", bar: %{id: "foo"})
+          "bar" => link_to("POST /foo/@bar", [bar: %{id: "foo"}], %{baz: %{"id" => "thing"}})
         }
       end
     end

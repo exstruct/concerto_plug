@@ -17,11 +17,7 @@ defmodule Concerto.Plug.Mazurka do
           {method, path_info} ->
             %{affordance |
               method: method,
-              path: "/" <> (
-                path_info
-                |> Stream.map(&to_param/1)
-                |> Enum.join("/")
-              ),
+              path: "/" <> Enum.join(path_info, "/"),
               fragment: opts[:fragment],
               query: case URI.encode_query(input) do
                        "" -> nil
@@ -44,12 +40,15 @@ defmodule Concerto.Plug.Mazurka do
         resolve_module(resource_name)
       end
 
-      def to_param(%{id: id}) do
-        id
+      def format_params(params, _source, _conn) do
+        Enum.reduce(params, params, fn({key, value}, acc) ->
+          %{acc | key => to_param(value)}
+        end)
       end
-      def to_param(value) do
-        value
-      end
+
+      def to_param(%{id: id}), do: id
+      def to_param(%{"id" => id}), do: id
+      def to_param(value), do: value
       defoverridable [to_param: 1]
     end
   end
